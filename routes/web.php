@@ -16,5 +16,6 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/task-1', [TaskController::class, 'task1']);
 Route::get('/task-2', [TaskController::class, 'task2']);
+Route::get('/task-3', [TaskController::class, 'task3']);
 
 Route::redirect('/', '/task-1');

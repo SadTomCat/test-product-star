@@ -3,7 +3,7 @@
         <table class="w-full text-sm text-left">
             <thead class="text-xs text-gray-700 uppercase bg-blue-700 text-white">
             <tr>
-                <th scope="col" class="px-6 py-3" v-for="column in columns" :key="column.name">
+                <th scope="col" class="px-6 py-3 text-center" v-for="column in columns" :key="column.name">
                     {{ column.title }}
                 </th>
             </tr>

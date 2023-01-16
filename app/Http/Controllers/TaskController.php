@@ -43,4 +43,20 @@ class TaskController extends Controller
 
         return Inertia::render('Task2', ['pagination' => $pagination]);
     }
+
+    public function task3()
+    {
+        $query = DB::table('lessons')
+                   ->select('lessons.id', 'lessons.title as lesson', 'courses.title as course')
+                   ->selectRaw('COUNT(lesson_user.id) as viewed')
+                   ->join('lesson_user', 'lessons.id', 'lesson_user.lesson_id')
+                   ->join('courses', 'course_id', 'courses.id')
+                   ->groupBy('lessons.id')
+                   ->orderBy('viewed', 'desc')
+                   ->orderBy('lessons.id');
+
+        $pagination = $query->paginate(10)->onEachSide(1);
+
+        return Inertia::render('Task3', ['pagination' => $pagination]);
+    }
 }

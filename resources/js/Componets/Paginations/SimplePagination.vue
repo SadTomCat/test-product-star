@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div class="flex justify-center" v-if="links.length > 5">
+        <div class="flex justify-center">
             <div class="flex space-x-2">
                 <Link class="main-table__pagination-button"
                       v-html="link.label"
