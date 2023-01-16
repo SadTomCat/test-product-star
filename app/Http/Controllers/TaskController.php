@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use Inertia\Response;
 use App\Enums\RolesEnum;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    public function task1()
+    /**
+     * @return Response
+     */
+    public function task1(): Response
     {
         $userQuery = DB::table('users')
                        ->select('users.id', 'first_name', 'last_name', 'email')
@@ -27,7 +31,10 @@ class TaskController extends Controller
         return Inertia::render('Task1', ['pagination' => $pagination]);
     }
 
-    public function task2()
+    /**
+     * @return Response
+     */
+    public function task2(): Response
     {
         $query = DB::table('users')
                    ->select('users.id', 'first_name', 'last_name', 'email')
@@ -44,7 +51,10 @@ class TaskController extends Controller
         return Inertia::render('Task2', ['pagination' => $pagination]);
     }
 
-    public function task3()
+    /**
+     * @return Response
+     */
+    public function task3(): Response
     {
         $query = DB::table('lessons')
                    ->select('lessons.id', 'lessons.title as lesson', 'courses.title as course')
