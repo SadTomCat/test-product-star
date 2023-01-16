@@ -19,7 +19,10 @@ class TaskController extends Controller
                        ->selectRaw('TRUNCATE(count(lessons.id) / (SELECT COUNT(*) FROM lessons) * 100, 2) as process')
                        ->leftJoin('lesson_user', 'users.id', 'lesson_user.user_id')
                        ->leftJoin('lessons', 'lessons.id', 'lesson_user.lesson_id')
-                       ->where('users.role', RolesEnum::User->value)
+                       ->where([
+                           ['users.role', RolesEnum::User->value],
+                           ['lesson_user.is_completed', true]
+                       ])
                        ->groupBy('users.id');
 
         $resQuery = DB::table(DB::raw("({$userQuery->toSql()}) as user"))
